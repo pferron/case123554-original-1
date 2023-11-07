@@ -26,9 +26,52 @@
     "issueType": "DEPENDENCY"
   },
   "remediateSettings": {
-    "workflowRules": {
+    "enableRenovate": true,
+    "extends": [
+      "config:base"
+    ],
+    "enabledManagers": [
+      "npm"
+    ],
+    "rebaseWhen": "never",
+    "recreateWhen": "never",
+    "semanticCommits": "disabled",
+    "commitMessagePrefix": "chore: [non-df][non-func][unplanned]",
+    "lockFileMaintenance": {
+      "automerge": false,
       "enabled": true
-    }
+    },
+    "packageRules": [
+      {
+        "matchPackageNames": ["react-native", "react", "react-native-flipper"],
+        "enabled": false
+      },
+      {
+        "automerge": false,
+        "matchUpdateTypes": [
+          "major",
+          "minor",
+          "patch",
+          "pin",
+          "pinDigest",
+          "digest"
+        ]
+      },
+      {
+        "matchPackageNames": [
+          "danger",
+          "chance"
+        ],
+        "matchPackagePrefixes": [
+          "eslint",
+          "jest",
+          "@html-eslint",
+          "prettier"
+        ],
+        "labels": ["qyrus-na"],
+        "automerge": false
+      }
+    ]
   },
    "imageSettings":{
        "imageTracing":{
